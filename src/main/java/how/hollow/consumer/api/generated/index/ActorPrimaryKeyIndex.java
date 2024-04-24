@@ -42,8 +42,9 @@ public class ActorPrimaryKeyIndex extends AbstractHollowUniqueKeyIndex<MovieAPI,
 
     public Actor findMatch(int actorId) {
         int ordinal = idx.getMatchingOrdinal(actorId);
-        if(ordinal == -1)
+        if(ordinal == -1) {
             return null;
+        }
         return api.getActor(ordinal);
     }
 

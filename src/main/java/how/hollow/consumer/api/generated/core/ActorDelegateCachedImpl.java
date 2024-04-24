@@ -27,8 +27,9 @@ public class ActorDelegateCachedImpl extends HollowObjectAbstractDelegate implem
     }
 
     public int getActorId(int ordinal) {
-        if(actorId == null)
+        if(actorId == null) {
             return Integer.MIN_VALUE;
+        }
         return actorId.intValue();
     }
 
@@ -41,8 +42,9 @@ public class ActorDelegateCachedImpl extends HollowObjectAbstractDelegate implem
     }
 
     public boolean isActorNameEqual(int ordinal, String testValue) {
-        if(testValue == null)
+        if(testValue == null) {
             return actorName == null;
+        }
         return testValue.equals(actorName);
     }
 

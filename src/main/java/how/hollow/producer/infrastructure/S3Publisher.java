@@ -202,7 +202,7 @@ public class S3Publisher implements Publisher {
      * Find all of the existing snapshots.
      */
     private List<Long> initializeSnapshotIndex() {
-    	List<Long> snapshotIdx = new ArrayList<Long>();
+    	List<Long> snapshotIdx = new ArrayList<>();
     	
         ObjectListing listObjects = s3.listObjects(bucketName, getS3ObjectPrefix(blobNamespace, "snapshot"));
 

@@ -34,15 +34,17 @@ public class Movie extends HollowObject {
 
     public HString getTitleHollowReference() {
         int refOrdinal = delegate().getTitleOrdinal(ordinal);
-        if(refOrdinal == -1)
+        if(refOrdinal == -1) {
             return null;
+        }
         return  api().getHString(refOrdinal);
     }
 
     public SetOfActor getActors() {
         int refOrdinal = delegate().getActorsOrdinal(ordinal);
-        if(refOrdinal == -1)
+        if(refOrdinal == -1) {
             return null;
+        }
         return  api().getSetOfActor(refOrdinal);
     }
 

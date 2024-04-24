@@ -90,8 +90,9 @@ public class DynamoDBAnnouncementWatcher implements AnnouncementWatcher {
         Item item = table.getItem("namespace", blobNamespace,
                 "version, pin_version", null);
 
-        if (item.isPresent("pin_version") && !item.isNull("pin_version"))
+        if(item.isPresent("pin_version") && !item.isNull("pin_version")) {
             return item.getLong("pin_version");
+        }
 
         return item.getLong("version");
     }

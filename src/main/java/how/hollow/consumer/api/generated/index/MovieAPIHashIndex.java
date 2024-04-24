@@ -40,9 +40,11 @@ public class MovieAPIHashIndex extends AbstractHollowHashIndex<MovieAPI> {
 
     public Iterable<HString> findStringMatches(Object... keys) {
         HollowHashIndexResult matches = idx.findMatches(keys);
-        if(matches == null) return Collections.emptySet();
+        if(matches == null) {
+            return Collections.emptySet();
+        }
 
-        return new AbstractHollowOrdinalIterable<HString>(matches.iterator()) {
+        return new AbstractHollowOrdinalIterable<>(matches.iterator()) {
             public HString getData(int ordinal) {
                 return api.getHString(ordinal);
             }
@@ -51,9 +53,11 @@ public class MovieAPIHashIndex extends AbstractHollowHashIndex<MovieAPI> {
 
     public Iterable<Actor> findActorMatches(Object... keys) {
         HollowHashIndexResult matches = idx.findMatches(keys);
-        if(matches == null) return Collections.emptySet();
+        if(matches == null) {
+            return Collections.emptySet();
+        }
 
-        return new AbstractHollowOrdinalIterable<Actor>(matches.iterator()) {
+        return new AbstractHollowOrdinalIterable<>(matches.iterator()) {
             public Actor getData(int ordinal) {
                 return api.getActor(ordinal);
             }
@@ -62,9 +66,11 @@ public class MovieAPIHashIndex extends AbstractHollowHashIndex<MovieAPI> {
 
     public Iterable<SetOfActor> findSetOfActorMatches(Object... keys) {
         HollowHashIndexResult matches = idx.findMatches(keys);
-        if(matches == null) return Collections.emptySet();
+        if(matches == null) {
+            return Collections.emptySet();
+        }
 
-        return new AbstractHollowOrdinalIterable<SetOfActor>(matches.iterator()) {
+        return new AbstractHollowOrdinalIterable<>(matches.iterator()) {
             public SetOfActor getData(int ordinal) {
                 return api.getSetOfActor(ordinal);
             }
@@ -73,9 +79,11 @@ public class MovieAPIHashIndex extends AbstractHollowHashIndex<MovieAPI> {
 
     public Iterable<Movie> findMovieMatches(Object... keys) {
         HollowHashIndexResult matches = idx.findMatches(keys);
-        if(matches == null) return Collections.emptySet();
+        if(matches == null) {
+            return Collections.emptySet();
+        }
 
-        return new AbstractHollowOrdinalIterable<Movie>(matches.iterator()) {
+        return new AbstractHollowOrdinalIterable<>(matches.iterator()) {
             public Movie getData(int ordinal) {
                 return api.getMovie(ordinal);
             }

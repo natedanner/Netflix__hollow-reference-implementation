@@ -32,8 +32,8 @@ public class SourceDataRetriever {
 	private int nextActorId;
 	
 	public SourceDataRetriever() {
-		this.allMovies = new ArrayList<Movie>();
-		this.allActors = new ArrayList<Actor>();
+		this.allMovies = new ArrayList<>();
+		this.allActors = new ArrayList<>();
 		this.rand = new Random();
 		bootstrapData();
 	}
@@ -69,20 +69,23 @@ public class SourceDataRetriever {
 				iterator.next();
 				iterator.remove();
     		}
-    		
-    		for(int j=0;j<numActorsToAdd;j++)
-    			movie.actors.add(allActors.get(rand.nextInt(allActors.size())));
+
+            for(int j = 0;j < numActorsToAdd;j++) {
+                movie.actors.add(allActors.get(rand.nextInt(allActors.size())));
+            }
     	}
     	
     	/// remove a few movies
     	int numMoviesToRemove = rand.nextInt(3);
-    	for(int i=0;i<numMoviesToRemove;i++)
-    		allMovies.remove(rand.nextInt(allMovies.size()));
+        for(int i = 0;i < numMoviesToRemove;i++) {
+            allMovies.remove(rand.nextInt(allMovies.size()));
+        }
     	
     	/// add a few movies
     	int numMoviesToAdd = rand.nextInt(3);
-    	for(int i=0;i<numMoviesToAdd;i++)
-    		allMovies.add(generateNewRandomMovie());
+        for(int i = 0;i < numMoviesToAdd;i++) {
+            allMovies.add(generateNewRandomMovie());
+        }
     	
     	return allMovies;
     }
@@ -90,13 +93,15 @@ public class SourceDataRetriever {
     private List<Movie> bootstrapData() {
         nextActorId = 1000000;
         nextMovieId = 1000000;
-        
-        for(int i=1;i<1000;i++)
+
+        for(int i = 1;i < 1000;i++) {
             allActors.add(generateNewRandomActor());
-        
-        
-        for(int i=0;i<10000;i++)
+        }
+
+
+        for(int i = 0;i < 10000;i++) {
             allMovies.add(generateNewRandomMovie());
+        }
         
         return allMovies;
     }
@@ -107,7 +112,7 @@ public class SourceDataRetriever {
     
     private Movie generateNewRandomMovie() {
         int numActors = rand.nextInt(25) + 1;
-        Set<Actor> actors = new HashSet<Actor>();
+        Set<Actor> actors = new HashSet<>();
         
         for(int j=0;j<numActors;j++) {
             actors.add(allActors.get(rand.nextInt(allActors.size())));

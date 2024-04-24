@@ -33,7 +33,7 @@ import java.io.File;
 
 public class Consumer {
     
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         File publishDir = new File(Producer.SCRATCH_DIR, "publish-dir");
         
         System.out.println("I AM THE CONSUMER.  I WILL READ FROM " + publishDir.getAbsolutePath());
@@ -75,10 +75,9 @@ public class Consumer {
         /// for each actor in that movie
         for(Actor actor : foundMovie.getActors()) {
             /// get all of movies of which they are cast members
-            moviesByActorName.findMatches(actor.getActorName()).forEach(movie -> {
+            moviesByActorName.findMatches(actor.getActorName()).forEach(movie ->
                 /// and just print the result
-                System.out.println(actor.getActorName() + " starred in " + movie.getTitle());
-            });
+                System.out.println(actor.getActorName() + " starred in " + movie.getTitle()));
         }
     }
     

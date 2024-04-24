@@ -48,11 +48,12 @@ public class APIGenerator {
      */
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         File projectRootFolder;
-        
-        if(args.length > 0)
+
+        if(args.length > 0) {
             projectRootFolder = new File(args[0]);
-        else
+        } else {
             projectRootFolder = findRootProjectFolder();
+        }
         
         
         APIGenerator generator = new APIGenerator(projectRootFolder);
@@ -77,7 +78,7 @@ public class APIGenerator {
         
         /// iterate over all java POJO files describing the data model.
         for(String filename : findProjectFolder(DATA_MODEL_SOURCE_FOLDER).list()) {
-            if(filename.endsWith(".java") && !filename.equals("SourceDataRetriever.java")) {
+            if(filename.endsWith(".java") && !"SourceDataRetriever.java".equals(filename)) {
                 String discoveredType = filename.substring(0, filename.indexOf(".java"));
                 /// initialize the schema for that data model type.
                 mapper.initializeTypeState(Class.forName(DATA_MODEL_PACKAGE + "." + discoveredType));
@@ -142,7 +143,7 @@ public class APIGenerator {
      * Assumption: The root project folder contains a file called 'build.gradle' 
      */
     private static boolean containsBuildGradle(File f) {
-        return f.listFiles((dir, name) -> name.equals("build.gradle")).length > 0;
+        return f.listFiles((dir, name) -> "build.gradle".equals(name)).length > 0;
     }
     
 }

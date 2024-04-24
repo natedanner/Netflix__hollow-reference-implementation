@@ -68,8 +68,9 @@ public class S3BlobRetriever implements BlobRetriever {
         			long nextGap = VarInt.readVLong(is);
         			
         			if(currentSnapshotStateId + nextGap > desiredVersion) {
-        				if(currentSnapshotStateId == 0)
-        					return null;
+                        if(currentSnapshotStateId == 0) {
+                            return null;
+                        }
         				
         				return knownSnapshotBlob(currentSnapshotStateId);
         			}
@@ -77,9 +78,10 @@ public class S3BlobRetriever implements BlobRetriever {
         			currentSnapshotStateId += nextGap;
         			pos += VarInt.sizeOfVLong(nextGap);
         		}
-        		
-                if(currentSnapshotStateId != 0)
+
+                if(currentSnapshotStateId != 0) {
                     return knownSnapshotBlob(currentSnapshotStateId);
+                }
         	}
         } catch(IOException e) {
         	throw new RuntimeException(e);

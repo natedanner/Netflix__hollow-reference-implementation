@@ -22,8 +22,9 @@ public class ActorTypeAPI extends HollowObjectTypeAPI {
     }
 
     public int getActorId(int ordinal) {
-        if(fieldIndex[0] == -1)
+        if(fieldIndex[0] == -1) {
             return missingDataHandler().handleInt("Actor", ordinal, "actorId");
+        }
         return getTypeDataAccess().readInt(ordinal, fieldIndex[0]);
     }
 
@@ -35,16 +36,18 @@ public class ActorTypeAPI extends HollowObjectTypeAPI {
             boxedFieldAccessSampler.recordFieldAccess(fieldIndex[0]);
             i = getTypeDataAccess().readInt(ordinal, fieldIndex[0]);
         }
-        if(i == Integer.MIN_VALUE)
+        if(i == Integer.MIN_VALUE) {
             return null;
+        }
         return Integer.valueOf(i);
     }
 
 
 
     public int getActorNameOrdinal(int ordinal) {
-        if(fieldIndex[1] == -1)
+        if(fieldIndex[1] == -1) {
             return missingDataHandler().handleReferencedOrdinal("Actor", ordinal, "actorName");
+        }
         return getTypeDataAccess().readOrdinal(ordinal, fieldIndex[1]);
     }
 
